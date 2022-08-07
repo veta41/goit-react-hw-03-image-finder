@@ -1,3 +1,7 @@
+import { GlobalStyle } from './GlobalStyle';
+// import { Box } from './Box';
+
+
 export const App = () => {
   return (
     <div
@@ -11,6 +15,8 @@ export const App = () => {
       }}
     >
       React homework template
+
+      <GlobalStyle/>
     </div>
   );
 };
