@@ -1,45 +1,18 @@
-import propTypes from 'prop-types';
-import {
-  Button,
-  Icon,
-  Input,
-  SearchbarHeader,
-  SearchForm,
-} from './Searchbar.styled';
+import PropTypes from 'prop-types';
+import { SearchbarHeader } from './Searchbar.styled';
 
-const Searchbar = ({ onSearch }) => {
-  const searchImages = e => {
-    e.preventDefault();
-    const input = e.target.elements.input;
+import SearchForm from './SearchForm/SearchForm';
 
-    if (input.value === '') {
-      return;
-    }
-
-    onSearch(input.value);
-  };
-
+const Searchbar = ({ onSubmit }) => {
   return (
     <SearchbarHeader>
-      <SearchForm onSubmit={searchImages}>
-        <Button type="submit">
-          <Icon />
-        </Button>
-
-        <Input
-          name="input"
-          type="text"
-          autocomplete="off"
-          autoFocus
-          placeholder="Search images and photos"
-        />
-      </SearchForm>
+      <SearchForm onSubmit={onSubmit} />
     </SearchbarHeader>
   );
 };
 
 Searchbar.propTypes = {
-  onSubmit: propTypes.func,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default Searchbar;
