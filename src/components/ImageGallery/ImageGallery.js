@@ -3,18 +3,18 @@ import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
 
 import { Gallery } from './ImageGallery.styled';
 
-const ImageGallery = ({ hits, onClick }) => {
+const ImageGallery = ({ items, onClick }) => {
   return (
     <Gallery>
-      {hits.map(hit => {
-        return <ImageGalleryItem key={hit.id} hit={hit} onClick={onClick} />;
+      {items.map(item => {
+        return <ImageGalleryItem key={item.id} item={item} onClick={onClick} />;
       })}
     </Gallery>
   );
 };
 
 ImageGallery.propTypes = {
-  hits: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  items: PropTypes.arrayOf(PropTypes.object),
   onClick: PropTypes.func.isRequired,
 };
 

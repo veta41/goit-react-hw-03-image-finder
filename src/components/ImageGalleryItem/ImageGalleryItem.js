@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
 import { Item, Image } from './ImageGalleryItem.styled';
 
-const ImageGalleryItem = ({ hit, onClick }) => {
+const ImageGalleryItem = ({ item, onClick }) => {
+  const { webformatURL, tag, largeImageURL } = item;
   return (
-    <Item id={hit.id} onClick={onClick}>
+    <Item>
       <Image
-        src={hit.webformatURL}
-        alt={hit.tags}
-        data-src={hit.largeImageURL}
+        src={webformatURL}
+        alt={tag}
+        onClick={() => onClick(largeImageURL)}
         loading="lazy"
       />
     </Item>
@@ -15,7 +16,12 @@ const ImageGalleryItem = ({ hit, onClick }) => {
 };
 
 ImageGalleryItem.propTypes = {
-  hit: PropTypes.shape().isRequired,
+  items: PropTypes.exact({
+    id: PropTypes.string,
+    webformatURL: PropTypes.string,
+    tag: PropTypes.string,
+    largeImageURL: PropTypes.string,
+  }),
   onClick: PropTypes.func.isRequired,
 };
 

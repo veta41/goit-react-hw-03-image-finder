@@ -6,11 +6,9 @@ import { Overlay, ModalWindow } from './Modal.styled';
 const modalRoot = document.querySelector('#modal-root');
 
 class Modal extends Component {
-  state = {};
-
   static propTypes = {
     onClose: PropTypes.func.isRequired,
-    children: PropTypes.node,
+    url: PropTypes.string.isRequired,
   };
 
   componentDidMount() {
@@ -35,7 +33,9 @@ class Modal extends Component {
   render() {
     return createPortal(
       <Overlay onClick={this.handleClickBackdrop}>
-        <ModalWindow>{this.props.children}</ModalWindow>
+        <ModalWindow>
+          <img src={this.props.url} alt="" />
+        </ModalWindow>
       </Overlay>,
       modalRoot
     );
